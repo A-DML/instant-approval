@@ -8,22 +8,17 @@ export default {
   props: {
     status: {
       type: String,
-      default: 'Undecided'
+      default: 'Unlisted'
     }
   },
   computed: {
     statusColorClass() {
       switch (this.status) {
-        case 'Approved':
+        case 'Whitelisted':
           return 'bg-loanbot-green border-loanbot-green text-loanbot-green'
-        case 'Processed':
-          return 'bg-loanbot-green border-loanbot-green text-loanbot-green'
-        // case 'Undecided':
-        //   return 'bg-loanbot-red border-loanbot-red text-loanbot-red'
-        // case 'Declined':
-        //   return 'bg-loanbot-red border-loanbot-red text-loanbot-red'
-        case 'Declined':
+        case 'Blacklisted':
           return 'bg-loanbot-red border-loanbot-red text-loanbot-red'
+        case 'Unlisted':
         default:
           return 'bg-loanbot-orange border-loanbot-orange text-loanbot-orange'
       }

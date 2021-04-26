@@ -1,100 +1,18 @@
 <template>
-    <div>
-        <div class="flex flex-wrap sm:justify-between mt-8 mb-8">
+  <div>
+     <div class="flex flex-wrap sm:justify-between mt-8 mb-8">
            <div>
             <h1 class="text-3xl font-bold mb-1">
-          All Companies
-           </h1>
-           <div class="button justify-end" @click="openCreateModal"> Add Company </div>
+          All Customers
+          </h1>
            </div>
        </div>
-       <div class="flex flex-wrap">
-              <div class="w-full lg:w-6/12 xl:w-3/12 px-4 pb-4">
-                <div class="relative flex flex-col min-w-0 break-words bg-blue-100 rounded mb-6 xl:mb-0 shadow-lg">
-                  <div class="flex-auto p-4">
-                    <div class="flex flex-wrap">
-                      <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                        <h5 class="text-blueGray-400 uppercase font-bold text-xs">
-                          Total Companies 
-                        </h5>
-                        <span class="font-semibold text-xl text-blueGray-700">
-                          350,897
-                        </span>
-                      </div>
-                      <div class="relative w-auto pl-4 flex-initial">
-                        <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-blue-500">
-                          <i class="far fa-chart-bar"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="w-full lg:w-6/12 xl:w-3/12 px-4 pb-4">
-                <div class="relative flex flex-col min-w-0 break-words bg-blue-200 rounded mb-6 xl:mb-0 shadow-lg">
-                  <div class="flex-auto p-4">
-                    <div class="flex flex-wrap">
-                      <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                        <h5 class="text-blueGray-400 uppercase font-bold text-xs">
-                          White Listed
-                        </h5>
-                        <span class="font-semibold text-xl text-blueGray-700">
-                          350,897
-                        </span>
-                      </div>
-                      <div class="relative w-auto pl-4 flex-initial">
-                        <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-blue-500">
-                          <i class="far fa-chart-bar"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="w-full lg:w-6/12 xl:w-3/12 px-4 pb-4">
-                <div class="relative flex flex-col min-w-0 break-words bg-blue-300 rounded mb-6 xl:mb-0 shadow-lg">
-                  <div class="flex-auto p-4">
-                    <div class="flex flex-wrap">
-                      <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                        <h5 class="text-blueGray-400 uppercase font-bold text-xs">
-                          Black Listed
-                        </h5>
-                        <span class="font-semibold text-xl text-blueGray-700">
-                          350,897
-                        </span>
-                      </div>
-                      <div class="relative w-auto pl-4 flex-initial">
-                        <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-blue-500">
-                          <i class="far fa-chart-bar"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="w-full lg:w-6/12 xl:w-3/12 px-4 pb-4">
-                <div class="relative flex flex-col min-w-0 break-words bg-blue-400 rounded mb-6 xl:mb-0 shadow-lg">
-                  <div class="flex-auto p-4">
-                    <div class="flex flex-wrap">
-                      <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                        <h5 class="text-blueGray-400 uppercase font-bold text-xs">
-                         Unlisted
-                        </h5>
-                        <span class="font-semibold text-xl text-blueGray-700">
-                          350,897
-                        </span>
-                      </div>
-                      <div class="relative w-auto pl-4 flex-initial">
-                        <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-blue-500">
-                          <i class="far fa-chart-bar"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-       </div>
-        <datatable class="pt-12 text-9xl"
+       <SearchField
+        class="w-full"
+        v-model="query"
+        label="Search for Customer’s Name, Status, etc."
+      />
+      <datatable class="pt-12 text-9xl"
         :columns="columns"
         :data="data"
         :footer="false"
@@ -103,8 +21,12 @@
         :selectable="false"
         dropdown="actions"
       >
+      <template #td-3="{ item }">
+          <CustomerStatus :status="item.row.loanstatus" />
+        </template>
       </datatable>
-    </div>
+      
+  </div>
 </template>
 <script>
 export default {
@@ -112,19 +34,49 @@ export default {
         return {
             data:[
                 {
-                    
-                    name: "Branch International",
-                    status: "Approved"
+                    id: 1,
+                    name: "AMINAT ABIDOGUN",
+                    status: "Employed",
+                    loanstatus: "Approved"
                 },
                 {
-                    
-                    name: "Branch International",
+                    id: 1,
+                    name: "AMINAT ABIDOGUN",
+                     status: "Employed",
+                    loanstatus: "Proccessed"
                 },
                 {
-                    name: "Branch International",
+                    id: 1,
+                    name: "AMINAT ABIDOGUN",
+                    status: "Employed"
+                },
+                 {
+                    id: 1,
+                    name: "AMINAT ABIDOGUN",
+                    status: "Employed"
+                },
+                 {
+                    id: 1,
+                    name: "AMINAT ABIDOGUN",
+                    status: "Employed"
                 },
                 {
-                    name: "Branch International",
+                    id: 1,
+                    name: "AMINAT ABIDOGUN",
+                    status: "Employed",
+                    loanstatus: "Approved"
+                },
+                {
+                    id: 1,
+                    name: "AMINAT ABIDOGUN",
+                    status: "Employed",
+                    loanstatus: "Approved"
+                },
+                {
+                    id: 1,
+                    name: "AMINAT ABIDOGUN",
+                    status: "Self Employed",
+                    loanstatus: "Declined"
                 },
                 
             ],
@@ -132,12 +84,16 @@ export default {
             {
                 th: "Customer's Name",
                 name: "name",
-            },
-
-            {
-            th: "Status",
-            status: "status"
-            }
+        },
+        {
+            th: "Employement Status",
+            name: "status"
+        }, 
+        {
+          th: "Loan Status",
+          name: "loanstatus"
+        }
+        
     ]
         }
     }
