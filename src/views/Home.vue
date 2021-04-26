@@ -1,18 +1,15 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+   <div class="text-4xl font-bold">Damola</div>
+   <datatable
+   :columns="columns"
+        :data="data"
+        :footer="false"
+        :header="false"
+        :limit="15"
+        :selectable="false"
+        dropdown="actions" 
+   >
+     </datatable> 
   </div>
 </template>
-
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
-</script>
