@@ -1,8 +1,8 @@
-import Vue from "vue"
-import VueRouter from "vue-router"
+import Vue from "vue";
+import VueRouter from "vue-router";
 // import Home from "../views/Home.vue"
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
@@ -12,7 +12,7 @@ const routes = [
       {
         path: "/",
         name: "Login",
-        component: () => import("../views/auth/Login.vue")
+        component: () => import("../views/auth/Login.vue"),
       },
       // {
       //   path: "/",
@@ -22,32 +22,37 @@ const routes = [
     ],
   },
   {
-    path: '/',
-    component: () => import('../components/AppLayout.vue'),
+    path: "/",
+    component: () => import("../components/AppLayout.vue"),
     children: [
       {
         path: "/dashboard",
         name: "dashboard",
-        component: () => import("../views/Dashboard.vue")
+        component: () => import("../views/Dashboard.vue"),
       },
-       {
+      {
         path: "/allcustomers",
-         name: "allcustomers",
-         component: () => import("../views/customers/AllCustomers.vue")
-       },
-       {
+        name: "allcustomers",
+        component: () => import("../views/customers/AllCustomers.vue"),
+      },
+      {
         path: "/allcompanys",
-         name: "allcompanys",
-         component: () => import("../views/companys/AllCompanys.vue")
-       },
-    ]
-  }
-]
+        name: "allcompanys",
+        component: () => import("../views/companys/AllCompanys.vue"),
+      },
+      {
+        path: "/comdetails",
+        name: "comdetails",
+        component: () => import("../views/companys/ComDetails.vue"),
+      },
+    ],
+  },
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

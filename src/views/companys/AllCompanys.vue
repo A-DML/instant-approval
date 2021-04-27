@@ -5,7 +5,11 @@
             <h1 class="text-3xl font-bold mb-1">
           All Companies
            </h1>
-           <div class="button justify-end" @click="openCreateModal"> Add Company </div>
+           <div>
+        <router-link :to="{ name: 'comdetails' }" class="button">
+          Add Company
+        </router-link>
+      </div>
            </div>
        </div>
        <div class="flex flex-wrap">
@@ -103,9 +107,15 @@
         :selectable="false"
         dropdown="actions"
       >
-        <template #td-2="{ item }">
+        <template #td-7="{ item }">
           <CompanyStatus :status="item.row.status" />
         </template>
+        <router-link
+            :to="{ name: 'comdetails' }"
+            class="button bg-white text-loanbot-blue font-hairline inline-block mx-2"
+          >
+            View 
+          </router-link>
       </datatable>
     </div>
 </template>
@@ -118,7 +128,12 @@ export default {
                     
                     name: "Branch International",
                     status: "Whitelisted",
-                    details: "view Detail"
+                    email: "branch.io.com",
+                    website: "http/branch.com",
+                    profile: "https/lindkedin/profile",
+                    teirs: "A",
+                    salarydate: "25"
+                    
                 },
                 {
                     
@@ -136,20 +151,39 @@ export default {
             ],
             columns: [
             {
-                th: "Customer's Name",
+                th: "Companies's Name",
                 name: "name",
             },
-
             {
-            th: "Status",
-            name: "status"
+                th: "Company Email",
+                name: "email",
             },
             {
-              th: "",
-              name: "details"
-            }
+                th: "Website",
+                name: "website",
+            },
+            
+
+            {
+            th: "LinkedIn Profile",
+            name: "profile"
+            },
+            {
+                th: "Salary Date",
+                name: "salarydate"
+            },
+            {
+                th: "Teirs",
+                name: "teirs"
+            },
+            {
+              th: "Status",
+              name: "status"
+            },
+           
     ]
         }
-    }
+    },
+    
 }
 </script>

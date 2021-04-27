@@ -1,11 +1,16 @@
 <template>
     <div>
        <div class="flex flex-wrap sm:justify-between mt-8 mb-8">
-           <div>
+           <!-- <div>
             <h1 class="text-3xl font-bold mb-1">
           Dashboard
         </h1>
-           </div>
+           </div> -->
+           <div >
+            <router-link :to="{ name: 'dashboard' }" >
+              Dashboard
+            </router-link>
+          </div>
        </div>
          <div class="flex flex-wrap">
               <div class="w-full lg:w-6/12 xl:w-3/12 px-4 pb-4">
@@ -163,6 +168,9 @@
         :selectable="false"
         dropdown="actions"
       >
+      <template #td-7="{ item }">
+          <CustomerStatus :status="item.row.loanstatus" />
+        </template>
       </datatable>
           </div>
 </template>
@@ -174,17 +182,33 @@ export default {
                 {
                     id: 1,
                     name: "AMINAT ABIDOGUN",
-                    status: "Employed"
+                    status: "Employed",
+                    bvn: "33453890233",
+                    email: "aa@gmail.com",
+                    remark: "Customers record not found",
+                    amount: "40,009",
+                    loanstatus: "Approved",
+                    details: "View"
                 },
                 {
                     id: 1,
                     name: "AMINAT ABIDOGUN",
-                    status: " Self Employed"
+                    status: " Self Employed",
+                    bvn: "33453890233",
+                    email: "damolaaaa@gmail.com",
+                    remark: "Customers record not found",
+                    amount: "40,009",
+                    loanstatus: "Approved"
                 },
                 {
                     id: 1,
                     name: "AMINAT ABIDOGUN",
-                    status: "Employed"
+                    status: "Employed",
+                    bvn: "33453890233",
+                    email: "aa@gmail.com",
+                    remark: "Customers record not found",
+                    amount: "40,009",
+                    
                 },
                 {
                     id: 1,
@@ -202,9 +226,46 @@ export default {
             th: "Employement Status",
             name: "status"
         }, 
-        
+        {
+            th: "BVN",
+            name: "bvn"
+        }, 
+        {
+            th: "Workplace Email",
+            name: "email"
+        }, 
+        {
+            th: "Remark",
+            name: "remark"
+        }, 
+        {
+            th: "Loan Amount",
+            name: "amount"
+        }, 
+        {
+            th: "Loan Status",
+            name: "loanstatus"
+        }, 
+         {
+            th: "Details",
+            name: "details"
+        },  
+    ],
+    actions: [
+      {
+        text: "View",
+        class: "border-blue-500 text-blue-500 rounded-sm px-4 py-2",
+        action: this.details
+      }
     ]
-        }
     }
+     },
+     methods: {
+      view: function() {
+      this.$router.push({
+        name: 'details'
+      })
+    },
+     }
 }
 </script>
