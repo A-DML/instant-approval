@@ -23,6 +23,7 @@ module.exports = {
           red: "#FE2B5E",
           "red-light": "#FFF4F7",
         },
+        font: "poppins",
       },
     },
   },

@@ -8,7 +8,7 @@ import DataTable from "@cheezytony/vue-tailwind-datatable";
 
 Vue.config.productionTip = false;
 
-Vue.use(DataTable)
+Vue.use(DataTable);
 
 new Vue({
   router,

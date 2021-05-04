@@ -1,9 +1,9 @@
 <template>
   <div>
-     <div class="flex flex-wrap sm:justify-between mt-8 mb-8 p-8">
+     <div class="flex flex-wrap sm:justify-between mt-8 mb-8 p-6">
            <div>
             <h1 class="text-3xl font-bold mb-1">
-          All Customers
+          Declined Customers
           </h1>
            </div>
        </div>

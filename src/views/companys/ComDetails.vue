@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="mt-4 text-blue-600 tex-xl-200 justify-center">Add New Company</div>
+        <div class="mt-4 text-blue-600 tex-xl-200 justify-center p-6">Add New Company</div>
      <div class="flex justify-center items-center mt-5 px-12"> 
         <div class="border border-loanbot-blue border-opacity-25 rounded w-1/2 h-full p-12">
              <form action="" @submit.prevent="Add">
@@ -40,11 +40,12 @@
             v-model="form.salarydate"
           />
           <!-- section for status of the company with credpal -->
-          <p class="text-loanbot-blue mb-4">
-            Credpal User :
-          </p>
+          
           <div class="col-span-3 ">
               <div class="grid grid-cols-3 gap-2 ">
+                   <p class="text-loanbot-blue mb-4">
+            Credpal User :
+          </p>
                   <div
                 class="radio"
                 :class="credpaluser === 'Yes' && 'active'"
@@ -82,11 +83,12 @@
               </div>
           </div>
           <!-- the button for company tier -->
-           <p class="text-loanbot-blue mb-a">
+           
+          <div class="col-span-3 ">
+              <div class="grid grid-cols-3 gap-2 mb-4 ">
+                  <p class="text-loanbot-blue mb-a">
             Tier 
           </p>
-          <div class="col-span-3 ">
-              <div class="grid grid-cols-3 gap-2 ">
                   <div
                 class="radio"
                 :class="tier === 'A' && 'active'"
@@ -234,6 +236,16 @@ export default {
     },
      changeStatus(status = 'A') {
       this.status = status
+    },
+    daysOfTheMonth() {
+      const salarydates = []
+      for (let i = 0; i < 31; i++) {
+        const salarydate = i + 1
+        const value = salarydate
+        const title = `${salarydate}th`
+        salarydates.push({ title, value })
+      }
+      return salarydates
     },
     // process() {
     //     createNewCompany(this.form)

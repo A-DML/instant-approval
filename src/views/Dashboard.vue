@@ -1,20 +1,16 @@
 <template>
     <div>
-       <div class="flex flex-wrap sm:justify-between mt-8 mb-8">
-           <!-- <div>
+       <div class="flex flex-wrap sm:justify-between mt-8 mb-8 p-8">
+           <div>
             <h1 class="text-3xl font-bold mb-1">
           Dashboard
         </h1>
-           </div> -->
-           <div >
-            <router-link :to="{ name: 'dashboard' }" >
-              Dashboard
-            </router-link>
-          </div>
+           </div>
+        
        </div>
          <div class="flex flex-wrap">
               <div class="w-full lg:w-6/12 xl:w-3/12 px-4 pb-4">
-                <div class="relative flex flex-col min-w-0 break-words bg-blue-100 rounded mb-6 xl:mb-0 shadow-lg">
+                <div class="relative flex flex-col min-w-0 break-words white rounded mb-6 xl:mb-0 shadow-lg">
                   <div class="flex-auto p-4">
                     <div class="flex flex-wrap">
                       <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
@@ -43,7 +39,7 @@
                 </div>
               </div>
               <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
-                <div class="relative flex flex-col min-w-0 break-words bg-red-100 rounded mb-6 xl:mb-0 shadow-lg">
+                <div class="relative flex flex-col min-w-0 break-words white rounded mb-6 xl:mb-0 shadow-lg">
                   <div class="flex-auto p-4">
                     <div class="flex flex-wrap">
                       <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
@@ -72,7 +68,7 @@
                 </div>
               </div>
               <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
-                <div class="relative flex flex-col min-w-0 break-words bg-green-100 rounded mb-6 xl:mb-0 shadow-lg">
+                <div class="relative flex flex-col min-w-0 break-words white rounded mb-6 xl:mb-0 shadow-lg">
                   <div class="flex-auto p-4">
                     <div class="flex flex-wrap">
                       <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
@@ -101,7 +97,7 @@
                 </div>
               </div>
               <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
-                <div class="relative flex flex-col min-w-0 break-words bg-red-300 rounded mb-6 xl:mb-0 shadow-lg">
+                <div class="relative flex flex-col min-w-0 break-words white rounded mb-6 xl:mb-0 shadow-lg">
                   <div class="flex-auto p-4">
                     <div class="flex flex-wrap">
                       <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
@@ -159,7 +155,7 @@
                 </div>
               </div>
             </div>
-            <datatable class="pt-12 text-9xl"
+            <datatable class="pt-12 p-4 text-9xl"
         :columns="columns"
         :data="data"
         :footer="false"

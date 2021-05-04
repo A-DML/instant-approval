@@ -11,6 +11,7 @@
           :to="`/${link.to}`"
           class="link"
         >
+        <ion-icon :name="link.icon" class="text-xl mr-2" />
           {{ link.name }}
         </router-link>
     </div>
@@ -28,16 +29,19 @@ export default {
     return {
       headerLinks: [
         {
-          to: "dashboard",
-          name: 'Dashboard'
+          to: 'dashboard',
+          name: 'Dashboard',
+          icon: 'grid-outline'
         },
         {
           to: 'allcustomers',
-          name: 'Customers'
+          name: 'Customers',
+          icon: 'people-outline'
         },
         {
           to: 'allcompanys',
-          name: 'All companies'
+          name: 'All companies',
+          icon: 'people-outline'
         }
       ]
     }

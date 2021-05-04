@@ -14,11 +14,11 @@ const routes = [
         name: "Login",
         component: () => import("../views/auth/Login.vue"),
       },
-      // {
-      //   path: "/",
-      //   name: "ResetPassword",
-      //   component: () => import("../views/auth/ResetPassword.vue")
-      // },
+      {
+        path: "/",
+        name: "ResetPassword",
+        component: () => import("../views/auth/ResetPassword.vue")
+      },
     ],
   },
   {
@@ -36,6 +36,21 @@ const routes = [
         component: () => import("../views/customers/AllCustomers.vue"),
       },
       {
+        path: "/approved",
+        name: "approved",
+        component: () => import("../views/customers/Approved.vue"),
+      },
+      {
+        path: "/declined",
+        name: "declined",
+        component: () => import("../views/customers/Declined.vue"),
+      },
+      {
+        path: "/undecided",
+        name: "undecided",
+        component: () => import("../views/customers/Undecided.vue"),
+      },
+      {
         path: "/allcompanys",
         name: "allcompanys",
         component: () => import("../views/companys/AllCompanys.vue"),
@@ -44,6 +59,21 @@ const routes = [
         path: "/comdetails",
         name: "comdetails",
         component: () => import("../views/companys/ComDetails.vue"),
+      },
+      {
+        path: "/whitelist",
+        name: "whitelist",
+        component: () => import("../views/companys/Whitelist.vue"),
+      },
+      {
+        path: "/blacklist",
+        name: "blacklist",
+        component: () => import("../views/companys/Blacklist.vue"),
+      },
+      {
+        path: "/unlist",
+        name: "unlist",
+        component: () => import("../views/companys/Unlist.vue"),
       },
     ],
   },
