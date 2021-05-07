@@ -112,6 +112,19 @@
         </div>
       </div>
     </div>
+        <Paginator
+        :current="currentPage"
+        :chunk="perPage"
+        :total="total"
+        @changed="fetch($event)"
+        @chunkChanged="perPage = $event"
+    >
+      <SearchField
+        class="w-full"
+        v-model="query"
+        label="Search for Customer’s Name, Status, etc."
+      />
+    </Paginator>
     <datatable
       class="pt-12 text-9xl p-6"
       :columns="columns"
@@ -132,6 +145,13 @@
         View
       </router-link>
     </datatable>
+    <Paginator
+        :current="currentPage"
+        :chunk="perPage"
+        :total="total"
+        @changed="fetch($event)"
+        @chunkChanged="perPage = $event"
+      />
   </div>
 </template>
 <script>
@@ -139,6 +159,10 @@ import { fetchCompanies } from "@/requests"
 export default {
   data() {
     return {
+      perPage: 10,
+      total: 0,
+       query: '',
+      currentPage: 1,
       data: [],
       columns: [
         {
@@ -148,15 +172,11 @@ export default {
         {
           th: "Company Email",
           name: "email",
-          render: (company) => {
-            console.log(999, company)
-          }
         },
         {
           th: "Website",
           name: "website",
           render: (company) => {
-            console.log(999, company)
             if (!company?.domain){
               return "N/A"
             }
@@ -168,7 +188,6 @@ export default {
           th: "LinkedIn Profile",
           name: "profile",
           render: (company) => {
-            console.log(999, company)
             if (!company?.linkedin_url) {
               return "N/A"
             }
@@ -193,12 +212,12 @@ export default {
   watch: {
     query: {
       handler() {
-        this.fetch()
+        // this.fetch()
       }
     },
     perPage: {
       handler() {
-        this.fetch()
+        // this.fetch()
       }
     }
   },
@@ -211,7 +230,7 @@ export default {
       // this.loading = true
       fetchCompanies(page, this.query, this.perPage)
         .then(({ data }) => {
-          console.log(333, data)
+          console.log( data)
 
           // Update the customers' list
           // this.total = data.meta.total
@@ -219,7 +238,7 @@ export default {
           this.data.push(...data.results)
         })
         .catch(null)
-        .finally(() => console.log(666))
+        .finally(() => console.log())
     }
   }
 }
