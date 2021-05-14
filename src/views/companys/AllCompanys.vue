@@ -112,15 +112,16 @@
         </div>
       </div>
     </div>
-        <Paginator
-        :current="currentPage"
-        :chunk="perPage"
-        :total="total"
-        @changed="fetch($event)"
-        @chunkChanged="perPage = $event"
+    <Paginator
+      class="p-6"
+      :current="currentPage"
+      :chunk="perPage"
+      :total="total"
+      @changed="fetch($event)"
+      @chunkChanged="perPage = $event"
     >
       <SearchField
-        class="w-full"
+        class="w-full p-6"
         v-model="query"
         label="Search for Customer’s Name, Status, etc."
       />
@@ -146,22 +147,23 @@
       </router-link>
     </datatable>
     <Paginator
-        :current="currentPage"
-        :chunk="perPage"
-        :total="total"
-        @changed="fetch($event)"
-        @chunkChanged="perPage = $event"
-      />
+      class="p-6"
+      :current="currentPage"
+      :chunk="perPage"
+      :total="total"
+      @changed="fetch($event)"
+      @chunkChanged="perPage = $event"
+    />
   </div>
 </template>
 <script>
-import { fetchCompanies } from "@/requests"
+import { fetchCompanies, fetchWhitelisted, fetchBlacklisted } from "@/requests"
 export default {
   data() {
     return {
       perPage: 10,
       total: 0,
-       query: '',
+      query: "",
       currentPage: 1,
       data: [],
       columns: [
@@ -171,28 +173,28 @@ export default {
         },
         {
           th: "Company Email",
-          name: "email",
+          name: "email"
         },
         {
           th: "Website",
           name: "website",
-          render: (company) => {
-            if (!company?.domain){
-              return "N/A"
-            }
-            return company?.domain
-          }
+          render: (company) =>
+            company?.domain
+              ? `<a href=https://${company?.domain} target='_blank'>${company?.domain}</a>`
+              : "N/A"
         },
-
         {
           th: "LinkedIn Profile",
           name: "profile",
-          render: (company) => {
-            if (!company?.linkedin_url) {
-              return "N/A"
-            }
-            return company?.linkedin_url
-          }
+          render: (company) =>
+            company?.linkedin_url
+              ? `<a href=https://${company?.linkedin_url} target='_blank'>${company?.linkedin_url}</a>`
+              : "N/A" //{
+          //   if (!company?.linkedin_url) {
+          //     return "N/A"
+          //   }
+          //   return company?.linkedin_url
+          // }
         },
         {
           th: "Salary Date",
@@ -217,11 +219,11 @@ export default {
     },
     perPage: {
       handler() {
-        // this.fetch()
+        //  this.fetch()
       }
     }
   },
-  mounted() {
+  beforeMount() {
     // this.listenForClick()
     this.fetch()
   },
@@ -230,7 +232,7 @@ export default {
       // this.loading = true
       fetchCompanies(page, this.query, this.perPage)
         .then(({ data }) => {
-          console.log( data)
+          console.log(data)
 
           // Update the customers' list
           // this.total = data.meta.total
