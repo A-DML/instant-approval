@@ -24,5 +24,25 @@ const fetchBlacklisted = (page = 1, query = "", perPage = 10) => {
     per_page: perPage
   })
 }
+const fetchPending = (page = 1, query = "", perPage = 10) => {
+  return get$(api.companies.pending, {
+    page,
+    query,
+    per_page: perPage
+  })
+}
+const fetchSummary = (page = 1, query = "", perPage = 10) => {
+  return get$(api.companies.summary, {
+    page,
+    query,
+    per_page: perPage
+  })
+}
 
-export { fetchWhitelisted, fetchCompanies, fetchBlacklisted }
+export {
+  fetchWhitelisted,
+  fetchCompanies,
+  fetchBlacklisted,
+  fetchPending,
+  fetchSummary
+}

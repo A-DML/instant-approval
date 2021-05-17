@@ -1,18 +1,16 @@
 <template>
-    <div>
-        <div class="flex flex-wrap sm:justify-between mt-8 mb-8 p-6">
-           <div>
-            <h1 class="text-3xl font-bold mb-1">
-          Whitelisted Companies
-           </h1>
-           <div>
-        <router-link :to="{ name: 'comdetails' }" class="button">
-          Add Company
-        </router-link>
+  <div>
+    <div class="flex flex-wrap sm:justify-between mt-8 mb-8 p-6">
+      <div>
+        <h1 class="text-3xl font-bold mb-1">Whitelisted Companies</h1>
+        <div>
+          <router-link :to="{ name: 'comdetails' }" class="button">
+            Add Company
+          </router-link>
+        </div>
       </div>
-           </div>
-       </div>
-       <!-- <div class="flex flex-wrap">
+    </div>
+    <!-- <div class="flex flex-wrap">
               <div class="w-full lg:w-6/12 xl:w-3/12 px-4 pb-4">
                 <div class="relative flex flex-col min-w-0 break-words bg-blue-100 rounded mb-6 xl:mb-0 shadow-lg">
                   <div class="flex-auto p-4">
@@ -98,92 +96,102 @@
                 </div>
               </div>
        </div> -->
-        <datatable class="pt-12 text-9xl p-6"
-        :columns="columns"
-        :data="data"
-        :footer="false"
-        :header="false"
-        :limit="15"
-        :selectable="false"
-        dropdown="actions"
+    <datatable
+      class="pt-12 text-9xl p-6"
+      :columns="columns"
+      :data="data"
+      :footer="false"
+      :header="false"
+      :limit="15"
+      :selectable="false"
+      dropdown="actions"
+    >
+      <template #td-7="{ item }">
+        <CompanyStatus :status="item.row.status" />
+      </template>
+      <router-link
+        :to="{ name: 'comdetails' }"
+        class="button bg-white text-loanbot-blue font-hairline inline-block mx-2"
       >
-        <template #td-7="{ item }">
-          <CompanyStatus :status="item.row.status" />
-        </template>
-        <router-link
-            :to="{ name: 'comdetails' }"
-            class="button bg-white text-loanbot-blue font-hairline inline-block mx-2"
-          >
-            View 
-          </router-link>
-      </datatable>
-    </div>
+        View
+      </router-link>
+    </datatable>
+  </div>
 </template>
 <script>
+import { fetchWhitelisted } from "@/requests"
 export default {
-    data(){
-        return {
-            data:[
-                {
-                    
-                    name: "Branch International",
-                    status: "Whitelisted",
-                    email: "branch.io.com",
-                    website: "http/branch.com",
-                    profile: "https/lindkedin/profile",
-                    teirs: "A",
-                    salarydate: "25"
-                    
-                },
-                {
-                    
-                    name: "Branch International",
-                    status: "Blacklisted"
-                },
-                {
-                    name: "Branch International",
-                    status: "Whitelisted"
-                },
-                {
-                    name: "Branch International"
-                },
-                
-            ],
-            columns: [
-            {
-                th: "Companies's Name",
-                name: "name",
-            },
-            {
-                th: "Company Email",
-                name: "email",
-            },
-            {
-                th: "Website",
-                name: "website",
-            },
-            
-
-            {
-            th: "LinkedIn Profile",
-            name: "profile"
-            },
-            {
-                th: "Salary Date",
-                name: "salarydate"
-            },
-            {
-                th: "Teirs",
-                name: "teirs"
-            },
-            {
-              th: "Status",
-              name: "status"
-            },
-           
-    ]
+  data() {
+    return {
+      perPage: 10,
+      total: 0,
+      query: "",
+      currentPage: 1,
+      data: [],
+      columns: [
+        {
+          th: "Companies's Name",
+          name: "name"
+        },
+        {
+          th: "Company Email",
+          name: "email"
+        },
+        {
+          th: "Website",
+          name: "website",
+          render: (company) =>
+            company?.domain
+              ? `<a href=https://${company?.domain} target='_blank'>${company?.domain}</a>`
+              : "N/A"
+        },
+        {
+          th: "LinkedIn Profile",
+          name: "profile",
+          render: (company) =>
+            company?.linkedin_url
+              ? `<a href=${company?.linkedin_url} target='_blank'>${company?.linkedin_url}</a>`
+              : "N/A" //{
+          //   if (!company?.linkedin_url) {
+          //     return "N/A"
+          //   }
+          //   return company?.linkedin_url
+          // }
+        },
+        {
+          th: "Salary Date",
+          name: "salarydate"
+        },
+        {
+          th: "Company Teirs",
+          name: "teirs"
+        },
+        {
+          th: "Status",
+          name: "status"
         }
-    },
-    
+      ]
+    }
+  },
+
+  beforeMount() {
+    this.fetch()
+  },
+  methods: {
+    fetch(page = 1) {
+      // this.loading = true
+      fetchWhitelisted(page, this.query, this.perPage)
+        .then(({ data }) => {
+          console.log(data)
+
+          // Update the customers' list
+          // this.total = data.meta.total
+          // this.currentPage = data.meta.current_page
+          this.data.push(...data.results)
+        })
+        .catch(null)
+        .finally(() => console.log())
+    }
+  }
 }
 </script>

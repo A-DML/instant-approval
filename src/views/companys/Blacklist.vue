@@ -119,7 +119,7 @@
   </div>
 </template>
 <script>
-import { fetchCompanies, fetchBlacklisted } from "@/requests"
+import { fetchBlacklisted } from "@/requests"
 export default {
   data() {
     return {
@@ -131,7 +131,9 @@ export default {
       columns: [
         {
           th: "Companies's Name",
-          name: "name"
+          name: "name",
+          render: (company) => 
+          company?.name
         },
         {
           th: "Company Email",
@@ -174,29 +176,30 @@ export default {
     }
   },
   beforeMount() {
+
     this.getBlackListedCompanies()
   },
   methods: {
+    // fetch(page = 1) {
+    // this.loading = true
+    // fetchCompanies(page, this.query, this.perPage)
+    //   .then(({ data }) => {
+    //     console.log(data)
+
+    // Update the customers' list
+    // this.total = data.meta.total
+    // this.currentPage = data.meta.current_page
+    // this.data.push(...data.results)
+    // })
+    // .catch(null)
+    // .finally(() => console.log())
+    // },
+
     fetch(page = 1) {
-      // this.loading = true
-      fetchCompanies(page, this.query, this.perPage)
-        .then(({ data }) => {
-          console.log(data)
-
-          // Update the customers' list
-          // this.total = data.meta.total
-          // this.currentPage = data.meta.current_page
-          this.data.push(...data.results)
-        })
-        .catch(null)
-        .finally(() => console.log())
-        },
-
-        fetch(page = 1) {
       // this.loading = true
       fetchBlacklisted(page, this.query, this.perPage)
         .then(({ data }) => {
-          console.log(data)
+          console.log(data.data)
 
           // Update the customers' list
           // this.total = data.meta.total
@@ -205,11 +208,11 @@ export default {
         })
         .catch(null)
         .finally(() => console.log())
-        },
+    },
 
     async getBlackListedCompanies() {
       await fetchBlacklisted()
-        .then((response) => console.log(response))
+        .then((response) => this.data.push(...response.data.results))
         .catch((error) => console.log(error))
     }
   }

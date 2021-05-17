@@ -22,7 +22,7 @@
                   Total Companies
                 </h5>
                 <span class="font-semibold text-xl text-blueGray-700">
-                  350,897
+                  {{ total }}
                 </span>
               </div>
               <div class="relative w-auto pl-4 flex-initial">
@@ -47,8 +47,8 @@
                   Whitelisted
                 </h5>
                 <span class="font-semibold text-xl text-blueGray-700">
-                  350,897
-                </span>
+                {{whitelist}}
+              </span>
               </div>
               <div class="relative w-auto pl-4 flex-initial">
                 <div
@@ -72,7 +72,7 @@
                   Blacklisted
                 </h5>
                 <span class="font-semibold text-xl text-blueGray-700">
-                  350,897
+                  {{blacklist}}
                 </span>
               </div>
               <div class="relative w-auto pl-4 flex-initial">
@@ -97,7 +97,7 @@
                   Unlisted
                 </h5>
                 <span class="font-semibold text-xl text-blueGray-700">
-                  350,897
+                  {{pending}}
                 </span>
               </div>
               <div class="relative w-auto pl-4 flex-initial">
@@ -157,7 +157,7 @@
   </div>
 </template>
 <script>
-import { fetchCompanies, fetchWhitelisted, fetchBlacklisted } from "@/requests"
+import { fetchCompanies, fetchWhitelisted, fetchUnlisted, fetchBlacklisted, fetchSummary } from "@/requests"
 export default {
   data() {
     return {
@@ -188,7 +188,7 @@ export default {
           name: "profile",
           render: (company) =>
             company?.linkedin_url
-              ? `<a href=https://${company?.linkedin_url} target='_blank'>${company?.linkedin_url}</a>`
+              ? `<a href=${company?.linkedin_url} target='_blank'>${company?.linkedin_url}</a>`
               : "N/A" //{
           //   if (!company?.linkedin_url) {
           //     return "N/A"
@@ -208,7 +208,8 @@ export default {
           th: "Status",
           name: "status"
         }
-      ]
+      ],
+      summarydata: {}
     }
   },
   watch: {
@@ -223,9 +224,25 @@ export default {
       }
     }
   },
+  computed: {
+      whitelist() {
+     return this.summarydata?.whitelist || 0     
+      },
+      blacklist() {
+     return this.summarydata?.blacklist || 0     
+      },
+      pending() {
+     return this.summarydata?.pending || 0     
+      },
+      total() {
+     return this.summarydata?.total || 0     
+      },
+
+},
   beforeMount() {
     // this.listenForClick()
     this.fetch()
+    this.getSummary()
   },
   methods: {
     fetch(page = 1) {
@@ -241,6 +258,11 @@ export default {
         })
         .catch(null)
         .finally(() => console.log())
+    },
+    async getSummary() {
+      await fetchSummary()
+        .then((response) =>(this.summarydata=response.data))
+        .catch((error) => console.log(error))
     }
   }
 }
