@@ -22,7 +22,7 @@
                   Total Companies
                 </h5>
                 <span class="font-semibold text-xl text-blueGray-700">
-                  {{ total }}
+                  {{ totalcompanies }}
                 </span>
               </div>
               <div class="relative w-auto pl-4 flex-initial">
@@ -157,7 +157,7 @@
   </div>
 </template>
 <script>
-import { fetchCompanies, fetchWhitelisted, fetchUnlisted, fetchBlacklisted, fetchSummary } from "@/requests"
+import { fetchCompanies,  fetchSummary } from "@/requests"
 export default {
   data() {
     return {
@@ -215,12 +215,12 @@ export default {
   watch: {
     query: {
       handler() {
-        // this.fetch()
+        this.fetch()
       }
     },
     perPage: {
       handler() {
-        //  this.fetch()
+        this.fetch()
       }
     }
   },
@@ -234,7 +234,7 @@ export default {
       pending() {
      return this.summarydata?.pending || 0     
       },
-      total() {
+      totalcompany() {
      return this.summarydata?.total || 0     
       },
 
@@ -247,7 +247,9 @@ export default {
   methods: {
     fetch(page = 1) {
       // this.loading = true
-      fetchCompanies(page, this.query, this.perPage)
+      fetchCompanies(page, {
+        search: this.query
+      }, this.perPage)
         .then(({ data }) => {
           console.log(data)
 

@@ -4,6 +4,7 @@ export const api = {
     whitelisted: "companies?status=whitelist",
     blacklisted: "companies?status=blacklist",
     pending: "companies?status=pending",
-    summary: "companies/summary"
+    summary: "companies/summary",
+    search: "companies?search"
   }
 }

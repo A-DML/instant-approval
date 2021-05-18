@@ -1,6 +1,7 @@
 import Vue from "vue";
 
 Vue.component("TextField", () => import("@/components/form/TextField"));
+Vue.component("PrefilledForm", () => import("@/components/form/PrefilledForm"));
 Vue.component("Error", () => import("@/components/Error"));
 Vue.component("DashboardOverviewCard", () =>
   import("@/components/dashboard/OverviewCard")

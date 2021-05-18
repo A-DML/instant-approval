@@ -163,7 +163,7 @@
                           Total Companies
                         </h5>
                         <span class="font-semibold text-xl text-blueGray-700">
-                          2,356
+                          {{totalcompany}}
                         </span>
                       </div>
                       <div class="relative w-auto pl-4 flex-initial">
@@ -189,10 +189,10 @@
                     <div class="flex flex-wrap">
                       <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                         <h5 class="text-blueGray-400 uppercase font-bold text-xs">
-                          Whitelisted Companies
+                          Whitelist Companies
                         </h5>
                         <span class="font-semibold text-xl text-blueGray-700">
-                          2,356
+                          {{whitelist}}
                         </span>
                       </div>
                       <div class="relative w-auto pl-4 flex-initial">
@@ -218,10 +218,10 @@
                     <div class="flex flex-wrap">
                       <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                         <h5 class="text-blueGray-400 uppercase font-bold text-xs">
-                         Blacklisted Companies
+                         Blacklist Companies
                         </h5>
                         <span class="font-semibold text-xl text-blueGray-700">
-                          2,356
+                          {{blacklist}}
                         </span>
                       </div>
                       <div class="relative w-auto pl-4 flex-initial">
@@ -258,6 +258,7 @@
           </div>
 </template>
 <script>
+import { fetchSummary } from "@/requests"
 export default {
     data(){
         return {
@@ -318,6 +319,20 @@ export default {
             name: "loanstatus"
         }, 
     ],
+    computed: {
+      whitelist() {
+     return this.summarydata?.whitelist || 0     
+      },
+      blacklist() {
+     return this.summarydata?.blacklist || 0     
+      },
+      pending() {
+     return this.summarydata?.pending || 0     
+      },
+      totalcompany() {
+     return this.summarydata?.total || 0     
+      },
+    },
     actions: [
       {
         text: "View",
@@ -327,12 +342,22 @@ export default {
     ]
     }
      },
+     beforeMount() {
+    // this.listenForClick()
+    // this.fetch()
+    this.getSummary()
+  },
      methods: {
       view: function() {
       this.$router.push({
         name: 'details'
       })
     },
+    async getSummary() {
+      await fetchSummary()
+        .then((response) =>(this.summarydata=response.data))
+        .catch((error) => console.log(error))
+    }
      }
 }
 </script>

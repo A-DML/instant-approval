@@ -4,7 +4,7 @@ import { get$ } from "@/requests"
 const fetchCompanies = (page = 1, query = "", perPage = 10) => {
   return get$(api.companies.fetch, {
     page,
-    query,
+    ...query,
     per_page: perPage
   })
 }
@@ -38,11 +38,19 @@ const fetchSummary = (page = 1, query = "", perPage = 10) => {
     per_page: perPage
   })
 }
+const fetchSearch = (page = 1, query = "", perPage = 10) => {
+  return get$(api.companies.search, {
+    page,
+    query,
+    per_page: perPage
+  })
+}
 
 export {
   fetchWhitelisted,
   fetchCompanies,
   fetchBlacklisted,
   fetchPending,
-  fetchSummary
+  fetchSummary,
+  fetchSearch
 }
