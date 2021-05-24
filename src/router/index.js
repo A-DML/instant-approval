@@ -56,6 +56,16 @@ const routes = [
         component: () => import("../views/customers/CustomerDetails.vue"),
       },
       {
+        path: "/customersummary",
+        name: "customersummary",
+        component: () => import("../views/customers/CustomerSummary"),
+      },
+      {
+        path: "/customerapproval",
+        name: "customerapproval",
+        component: () => import("../views/customers/CustomerApproval"),
+      },
+      {
         path: "/allcompanys",
         name: "allcompanys",
         component: () => import("../views/companys/AllCompanys.vue"),

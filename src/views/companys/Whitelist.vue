@@ -134,10 +134,6 @@ export default {
           name: "name"
         },
         {
-          th: "Company Email",
-          name: "email"
-        },
-        {
           th: "Website",
           name: "website",
           render: (company) =>
@@ -157,14 +153,6 @@ export default {
           //   }
           //   return company?.linkedin_url
           // }
-        },
-        {
-          th: "Salary Date",
-          name: "salarydate"
-        },
-        {
-          th: "Company Teirs",
-          name: "teirs"
         },
         {
           th: "Status",

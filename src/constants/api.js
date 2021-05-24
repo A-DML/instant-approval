@@ -6,5 +6,12 @@ export const api = {
     pending: "companies?status=pending",
     summary: "companies/summary",
     search: "companies?search"
+  },
+  customers: {
+    fetch: "customer",
+    undecided: "customer?status=undecided",
+    approved: "customer?status=approved",
+    declined: "customer?status=declined",
+    summary: "customer/summary"
   }
 }

@@ -22,7 +22,7 @@
                   Total Companies
                 </h5>
                 <span class="font-semibold text-xl text-blueGray-700">
-                  {{ totalcompanies }}
+                  {{ totalcompany }}
                 </span>
               </div>
               <div class="relative w-auto pl-4 flex-initial">
@@ -172,10 +172,6 @@ export default {
           name: "name"
         },
         {
-          th: "Company Email",
-          name: "email"
-        },
-        {
           th: "Website",
           name: "website",
           render: (company) =>
@@ -197,16 +193,10 @@ export default {
           // }
         },
         {
-          th: "Salary Date",
-          name: "salarydate"
-        },
-        {
-          th: "Company Teirs",
-          name: "teirs"
-        },
-        {
           th: "Status",
-          name: "status"
+          name: "status",
+          render: (company) =>
+          company?. status
         }
       ],
       summarydata: {}

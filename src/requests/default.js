@@ -13,8 +13,8 @@ export const API_HOST = process.env.VUE_APP_BACKEND_HOST
  * @param header
  * @returns {Promise<any>}
  */
-export function request(method, url, data = {}, header = {}) {
-    console.log(999);
+export function request(method, url, path, data = {}, header = {}) {
+    console.log(999, path);
     
   return (
     axios
@@ -24,7 +24,8 @@ export function request(method, url, data = {}, header = {}) {
         data,
         // This is cause GET cannot send data so we have to be sure it is a param
         params: method === 'GET' ? data : {},
-        baseURL: `${API_HOST}/workplace/api/`,
+        // baseURL: `${API_HOST}/workplace/api/`,
+        baseURL: `${API_HOST}/${path}/api/`,
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${window.localStorage.getItem(API_TOKEN)}`,
@@ -61,8 +62,9 @@ export function request(method, url, data = {}, header = {}) {
  * @param query
  * @returns {Promise<any>}
  */
-export function get$(url, query = {}) {
-  return request("GET", url, query)
+export function get$(url, path, query = {}) {
+  console.log(path)
+  return request("GET", url, path, query)
 }
 
 /**
@@ -73,8 +75,8 @@ export function get$(url, query = {}) {
  * @param header
  * @returns {Promise<any>}
  */
-export function post$(url, data = {}, header = {}) {
-  return request('POST', url, data, header)
+export function post$(url, path, data = {}, header = {}) {
+  return request('POST', url, path, data, header)
 }
 
 /**
@@ -84,8 +86,8 @@ export function post$(url, data = {}, header = {}) {
  * @param data
  * @returns {Promise<any>}
  */
-export function patch$(url, data = {}) {
-  return request('PATCH', url, data)
+export function patch$(url, path, data = {}) {
+  return request('PATCH', url, path, data)
 }
 
 /**
@@ -94,6 +96,6 @@ export function patch$(url, data = {}) {
  * @param url
  * @returns {Promise<any>}
  */
-export function delete$(url) {
-  return request('DELETE', url)
+export function delete$(url, path) {
+  return request('DELETE', url, path)
 }

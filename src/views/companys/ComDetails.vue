@@ -224,7 +224,7 @@ export default {
         salarydates.push({ title, value })
       }
       return salarydates
-    }
+    },
     // process() {
     //     createNewCompany(this.form)
     //     this.$router.push({ name: 'allcompanys' })

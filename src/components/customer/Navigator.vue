@@ -1,12 +1,12 @@
 <template>
   <!-- Header -->
-  <div class="flex items-end container mx-auto">
+  <div class="">
     <!-- Left -->
-    <div class="w-1/4">
+    <!-- <div class="w-1/4">
       <p class="text-3xl">
         Process New Customer
       </p>
-    </div>
+    </div> -->
     <!-- Left -->
 
     <!-- Center -->
@@ -39,7 +39,7 @@
 export default {
   data() {
     return {
-      tabs: ['customer onboard', 'fetch credit history']
+      tabs: ['Agreement Summary', 'Instant Approval']
     }
   },
   methods: {

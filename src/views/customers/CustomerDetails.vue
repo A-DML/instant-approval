@@ -8,23 +8,31 @@
         </div>
         <div>
         <div class="border-b pb-2 mx-4">
-          <p> Name</p>
+          <p>Surname </p>
           <p>Customer Name</p>
         </div>
         <div class="border-b pb-2 p-8">
-          <p> Name</p>
+          <p> Lastname</p>
           <p>Customer Name</p>
         </div>
         <div class="border-b pb-2 p-8">
-          <p> Name</p>
+          <p> Nationality</p>
           <p>Customer Name</p>
         </div>
         <div class="border-b pb-2 p-4">
-          <p> Name</p>
+          <p> Gender</p>
           <p>Customer Name</p>
         </div>
         <div class="border-b pb-2 p-8">
-          <p> Name</p>
+          <p> Date of Birth</p>
+          <p>Customer Name</p>
+        </div>
+        <div class="border-b pb-2 p-8">
+          <p> Residential Address</p>
+          <p>Customer Name</p>
+        </div>
+        <div class="border-b pb-2 p-8">
+          <p> Phone No</p>
           <p>Customer Name</p>
         </div>
         </div>
@@ -32,7 +40,7 @@
       <!-- second section-->
       <div class="col-span-2 border-2">
         <!-- tabs for second section -->
-        <div style="border-bottom: 2px solid #eaeaea">
+        <!-- <div style="border-bottom: 2px solid #eaeaea">
           <ul class="flex cursor-pointer">
             <li class="py-2 px-6 bg-white rounded-t-lg">Personal</li>
             <li
@@ -46,8 +54,18 @@
               Pengaturan
             </li>
           </ul>
-        </div>
-        <datatable
+        </div> -->
+       
+    <div>
+         <Tabs v-model="tab" :tabs="tabs" class="mb-6" 
+           />
+          
+         <div>
+        
+      </div>
+    </div>
+
+        <!-- <datatable
           class="pt-12 p-4 text-9xl"
           :columns="columns"
           :data="data"
@@ -56,7 +74,7 @@
           :limit="15"
           :selectable="false"
           dropdown="actions"
-        ></datatable>
+        ></datatable> -->
       </div>
     </div>
   </div>
@@ -65,6 +83,15 @@
 export default {
   data() {
     return {
+      tabs: [
+        { name: "profile", title: "Profile" },
+        { name: "Performance Summary", title: "Performance Summary" },
+        { name: "Approval", title: "Instant Approval" },
+        // { name: "branch", title: "Branch & Region" },
+        // { name: "transactions", title: "Transfer Transactions" },
+        // { name: "settings", title: "Settings" },
+      ],
+      tab: "profile", 
       data: [
         {
           id: 1,

@@ -29,93 +29,83 @@
   </div>
 </template>
 <script>
+import {fetchApproved} from "@/requests"
 export default {
     data(){
         return {
-            data:[
-                {
-                    id: 1,
-                    name: "AMINAT ABIDOGUN",
-                    status: "Employed",
-                    bvn: "33453890233",
-                    email: "aa@gmail.com",
-                    remark: "Customers record not found",
-                    amount: "40,009",
-                    loanstatus: "Approved"
-                },
-                {
-                    id: 1,
-                    name: "AMINAT ABIDOGUN",
-                    status: " Self Employed",
-                    bvn: "33453890233",
-                    email: "damolaaaa@gmail.com",
-                    remark: "Customers record not found",
-                    amount: "40,009",
-                    loanstatus: "Approved"
-                },
-                {
-                    id: 1,
-                    name: "AMINAT ABIDOGUN",
-                    status: "Employed",
-                    bvn: "33453890233",
-                    email: "aa@gmail.com",
-                    remark: "Customers record not found",
-                    amount: "40,009",
-                    
-                },
-                {
-                    id: 1,
-                    name: "AMINAT ABIDOGUN",
-                    status: "Self Employed"
-                },
-                
-            ],
+           perPage: 10,
+      total: 0,
+      query: "",
+      currentPage: 1,
+            data:[],
             columns: [
             {
-                th: "Customer's Name",
-                name: "name",
+          th: "Customer's Name",
+          name: "name",
+          render: (customer) =>{
+          console.log(customer)
+        return `${customer?.customer?.FirstName} ${customer?.customer?.Surname} `
+          }
+        },
+         {
+          th: "Workplace Status",
+          name: "status",
+          ender: (customer) =>
+            customer?.workplace_status ? `${customer?.workplace_status}` : "N/A"
+        },
+       {
+          th: "BVN",
+          name: "bvn",
+          render: (customer) => customer?.customer?.BankVerificationNo
         },
         {
-            th: "Employement Status",
-            name: "status"
-        }, 
-        {
-            th: "BVN",
-            name: "bvn"
-        }, 
-        {
-            th: "Workplace Email",
-            name: "email"
-        }, 
-        {
-            th: "Remark",
-            name: "remark"
-        }, 
-        {
-            th: "Loan Amount",
-            name: "amount"
-        }, 
+          th: "Workplace Email",
+          name: "email",
+          render: (customer) =>
+            customer?.workplace_email
+              ? `${customer?.workplace_email}`
+              : "N/A"
+        },
         {
             th: "Loan Status",
             name: "loanstatus"
         }, 
          
     ],
-    actions: [
-      {
-        text: "View",
-        class: "border-blue-500 text-blue-500 rounded-sm px-4 py-2",
-        action: this.details
-      }
-    ]
+    // actions: [
+    //   {
+    //     text: "View",
+    //     class: "border-blue-500 text-blue-500 rounded-sm px-4 py-2",
+    //     action: this.details
+    //   }
+    // ]
     }
      },
-     methods: {
-      view: function() {
-      this.$router.push({
-        name: 'details'
-      })
-    },
-     }
+    //  methods: {
+    //   view: function() {
+    //   this.$router.push({
+    //     name: 'details'
+    //   })
+    // },
+    //  }
+    beforeMount() {
+    this.fetch()
+  },
+  methods: {
+    fetch(page = 1) {
+      // this.loading = true
+      fetchApproved(page, this.query, this.perPage)
+        .then(({ data }) => {
+          console.log(data)
+
+          // Update the customers' list
+          // this.total = data.meta.total
+          // this.currentPage = data.meta.current_page
+          this.data.push(...data.results)
+        })
+        .catch(null)
+        .finally(() => console.log())
+    }
+  }
 }
 </script>
