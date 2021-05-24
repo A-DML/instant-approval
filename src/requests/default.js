@@ -63,7 +63,6 @@ export function request(method, url, path, data = {}, header = {}) {
  * @returns {Promise<any>}
  */
 export function get$(url, path, query = {}) {
-  console.log(path)
   return request("GET", url, path, query)
 }
 

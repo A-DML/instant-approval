@@ -19,7 +19,6 @@
         <router-link
           :to="{ name: 'dashboard' }"
           class="flex flex-row items-center text-credpal-400 text-lg">
-          <ion-icon name="grid-outline"></ion-icon>
           <span class="">Dashboard</span>
         </router-link>
       </li>
@@ -30,7 +29,6 @@
           class="flex flex-row items-center text-xs"
           @click.prevent="collapse($refs.customers)"
         >
-          <ion-icon name="people-outline"></ion-icon>
           <span class="text-lg">Customers</span>
         </a>
         <ul class="sub-nav collapse" ref="customers">
@@ -79,7 +77,6 @@
           class="flex flex-row items-center text-lg"
           @click.prevent="collapse($refs.companies)"
         >
-          <ion-icon name="people-outline"></ion-icon>
           <span>Companies</span>
         </a>
         <ul class="sub-nav collapse" ref="customers">

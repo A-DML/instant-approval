@@ -32,12 +32,18 @@ const fetchDeclined = (page = 1, query = "", perPage = 10) => {
   })
 }
 
-const fetchSummary = (page = 1, query = "", perPage = 10) => {
+const fetchCustomerSummary = (page = 1, query = "", perPage = 10) => {
   return get$(api.customers.summary, path, {
     page,
     query,
     per_page: perPage
   })
+}
+const fetchCustomerDetails = (customerId) => {  
+  return get$(
+    api.customers.customerDetails.replace(":customerId", customerId),
+    path
+  )
 }
 
 export {
@@ -45,5 +51,6 @@ export {
   fetchUndecided,
   fetchApproved,
   fetchDeclined,
-  fetchSummary
+  fetchCustomerSummary,
+  fetchCustomerDetails
 }

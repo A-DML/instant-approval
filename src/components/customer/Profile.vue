@@ -103,6 +103,10 @@ export default {
         }
       ]
     }
+  },
+  beforeMount() {
+    console.log(45, 8888);
+    
   }
 }
 </script>

@@ -94,7 +94,7 @@
             <div class="flex flex-wrap">
               <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                 <h5 class="text-blueGray-400 uppercase font-bold text-xs">
-                  Unlisted
+                  Pending
                 </h5>
                 <span class="font-semibold text-xl text-blueGray-700">
                   {{pending}}
@@ -157,7 +157,7 @@
   </div>
 </template>
 <script>
-import { fetchCompanies,  fetchSummary } from "@/requests"
+import { fetchCompanies, fetchSummary } from "@/requests"
 export default {
   data() {
     return {

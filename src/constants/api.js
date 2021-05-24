@@ -12,6 +12,7 @@ export const api = {
     undecided: "customer?status=undecided",
     approved: "customer?status=approved",
     declined: "customer?status=declined",
-    summary: "customer/summary"
+    summary: "customer/summary",
+    customerDetails: "customer/:customerId"
   }
 }

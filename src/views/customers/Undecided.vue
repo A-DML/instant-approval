@@ -19,6 +19,7 @@
       :limit="15"
       :selectable="false"
       dropdown="actions"
+      @clicked-row="selectionUpdate"
     >
       <template #td-7="{ item }">
         <CustomerStatus :status="item.row.loanstatus" />
@@ -88,6 +89,17 @@ export default {
     this.fetch()
   },
   methods: {
+    selectionUpdate({ data }) {
+      console.log(66, data)
+
+      this.selected = data
+      this.isOpen = true
+
+      this.$router.push({
+        name: "customerdetails",
+        params: { customerId: data?.id }
+      })
+    },
     fetch(page = 1) {
       // this.loading = true
       fetchUndecided(page, this.query, this.perPage)

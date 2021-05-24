@@ -1,20 +1,26 @@
 <template>
-    <div>
-        <Tabs v-model="tab" :tabs="tabs" class="mb-6" />
-         <datatable
-          class="pt-12 p-4 text-9xl"
-          :columns="columns"
-          :data="data"
-          :footer="false"
-          :header="false"
-          :limit="15"
-          :selectable="false"
-          dropdown="actions"
-        ></datatable>
+  <div>
+    <Tabs v-model="tab" :tabs="tabs" class="mb-6" />
+    <datatable
+      class="pt-12 p-4 text-9xl"
+      :columns="columns"
+      :data="data"
+      :footer="false"
+      :header="false"
+      :limit="15"
+      :selectable="false"
+      dropdown="actions"
+    ></datatable>
   </div>
 </template>
 <script>
 export default {
+  props: {
+    user: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
       // tabs: [
@@ -102,8 +108,12 @@ export default {
         }
       ]
     }
+  },
+  beforeMount() {
+    console.log(24, this.user)
+  },
+  mounted() {
+    console.log(26, this.user)
   }
 }
 </script>
-
-   

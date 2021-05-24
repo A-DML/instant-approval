@@ -17,7 +17,7 @@
                   Total Customer
                 </h5>
                 <span class="font-semibold text-xl text-blueGray-700">
-                  {{totalcustomer}}
+                  {{ totalcustomer }}
                 </span>
               </div>
               <div class="relative w-auto pl-4 flex-initial">
@@ -92,7 +92,7 @@
                   Undecided
                 </h5>
                 <span class="font-semibold text-xl text-blueGray-700">
-                  {{undecided}}
+                  {{ undecided }}
                 </span>
               </div>
               <div class="relative w-auto pl-4 flex-initial">
@@ -132,6 +132,7 @@
       :limit="15"
       :selectable="false"
       dropdown="actions"
+      @clicked-row="selectionUpdate"
     >
       <template #td-7="{ item }">
         <CustomerStatus :status="item.row.loanstatus" />
@@ -148,7 +149,7 @@
   </div>
 </template>
 <script>
-import { fetchCustomers, fetchSummary } from "@/requests"
+import { fetchCustomers, fetchCustomerSummary } from "@/requests"
 export default {
   data() {
     return {
@@ -156,23 +157,22 @@ export default {
       total: 0,
       query: "",
       currentPage: 1,
+      isOpen: false,
+      selected: {},
       data: [],
       columns: [
         {
           th: "Customer's Name",
           name: "name",
-          render: (customer) =>{
-          console.log(customer)
-        return `${customer?.customer?.FirstName} ${customer?.customer?.Surname} `
+          render: (customer) => {
+            return `${customer?.customer?.FirstName} ${customer?.customer?.Surname} `
           }
         },
         {
           th: "Workplace Status",
           name: "status",
           ender: (customer) =>
-            customer?.workplace_status
-              ? `${customer?.workplace_status}`
-              : "N/A"
+            customer?.workplace_status ? `${customer?.workplace_status}` : "N/A"
         },
         {
           th: "BVN",
@@ -183,18 +183,13 @@ export default {
           th: "Workplace Email",
           name: "email",
           render: (customer) =>
-            customer?.workplace_email
-              ? `${customer?.workplace_email}`
-              : "N/A"
+            customer?.workplace_email ? `${customer?.workplace_email}` : "N/A"
         },
-        {
-          th: "Remark",
-          name: "remark"
-        },
-        {
-          th: "Loan Amount",
-          name: "amount"
-        },
+        // {
+        //   th: "Remark",
+        //   name: "remark"
+        // },
+
         {
           th: "Loan Status",
           name: "loanstatus"
@@ -228,20 +223,31 @@ export default {
     }
   },
   computed: {
-      approved() {
-     return this.customerdata?.approved || 0     
-      },
-      declined() {
-     return this.customerdata?.declined || 0     
-      },
-      undecided() {
-     return this.customerdata?.undecided || 0     
-      },
-      totalcustomer() {
-     return this.summarydata?.total || 0     
-      },
-      },
+    approved() {
+      return this.customerdata?.approved || 0
+    },
+    declined() {
+      return this.customerdata?.declined || 0
+    },
+    undecided() {
+      return this.customerdata?.undecided || 0
+    },
+    totalcustomer() {
+      return this.customerdata?.total || 0
+    }
+  },
   methods: {
+    selectionUpdate({ data }) {
+      console.log(66, data)
+
+      this.selected = data
+      this.isOpen = true
+
+      this.$router.push({
+        name: "customerdetails",
+        params: { customerId: data?.id }
+      })
+    },
     fetch(page = 1) {
       // this.loading = true
       fetchCustomers(
@@ -252,8 +258,6 @@ export default {
         this.perPage
       )
         .then(({ data }) => {
-          console.log(data)
-
           // Update the customers' list
           // this.total = data.meta.total
           // this.currentPage = data.meta.current_page
@@ -263,8 +267,12 @@ export default {
         .finally(() => console.log())
     },
     async getSummary() {
-      await fetchSummary()
-        .then((response) =>(this.customerdata=response.data))
+      await fetchCustomerSummary()
+        .then((response) => {
+          console.log(22, response)
+
+          this.customerdata = response.data
+        })
         .catch((error) => console.log(error))
     }
   }
