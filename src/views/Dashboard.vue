@@ -27,14 +27,6 @@
                         </div>
                       </div>
                     </div>
-                      <!-- <p class="text-sm text-blueGray-400 mt-4">
-                      <span class="text-emerald-500 mr-2">
-                        <i class="fas fa-arrow-up"></i> 3.48%
-                      </span> -->
-                      <!-- <span class="whitespace-nowrap">
-                        Since last month
-                      </span> -->
-                    <!-- </p> -->
                   </div>
                 </div>
               </div>

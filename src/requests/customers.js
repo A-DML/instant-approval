@@ -39,7 +39,7 @@ const fetchCustomerSummary = (page = 1, query = "", perPage = 10) => {
     per_page: perPage
   })
 }
-const fetchCustomerDetails = (customerId) => {  
+const fetchCustomerDetails = (customerId) => {
   return get$(
     api.customers.customerDetails.replace(":customerId", customerId),
     path

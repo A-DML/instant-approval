@@ -3,40 +3,40 @@
     <div class="grid grid-cols-3 gap-4 mt-8 mb-8 p-8">
       <!-- first section -->
       <div class="col-span-1 border-2">
-        <div class="mt-4 text-blue-600 text-4xl justify-center p-6">
+        <div class="mt-4 text-blue-600 text-4xs justify-center p-6">
           Customer Details
         </div>
-        <div>
+        <div v-if="userData.customer">
           <div class="border-b pb-2 mx-4">
-            <p>Surname</p>
-            <p>{{ userData.customer.Surname }}</p>
+            <p class="text-xs p-2">Surname</p>
+            <p class="text-xm ">{{ userData.customer.Surname }}</p>
           </div>
-          <div class="border-b pb-2 p-8">
-            <p>Lastname</p>
+          <div class="border-b pb-2 mx-4">
+            <p class="text-xs p-2">Lastname</p>
             <p>{{ userData.customer.FirstName }}</p>
           </div>
-          <div class="border-b pb-2 p-8">
-            <p>Nationality</p>
+          <div class="border-b pb-2 mx-4">
+            <p class="text-xs p-2">Nationality</p>
             <p>{{ userData.customer.Nationality }}</p>
           </div>
-          <div class="border-b pb-2 p-8">
-            <p>BVN</p>
+          <div class="border-b pb-2 mx-4">
+            <p class="text-xs p-2">BVN</p>
             <p>{{ userData.customer.BankVerificationNo }}</p>
           </div>
-          <div class="border-b pb-2 p-4">
-            <p>Gender</p>
+          <div class="border-b pb-2 mx-4">
+            <p class="text-xs p-2">Gender</p>
             <p>{{ userData.customer.Gender }}</p>
           </div>
-          <div class="border-b pb-2 p-8">
-            <p>Date of Birth</p>
+          <div class="border-b pb-2 mx-4">
+            <p class="text-xs p-2">Date of Birth</p>
             <p>{{ userData.customer.BirthDate }}</p>
           </div>
-          <div class="border-b pb-2 p-8">
-            <p>Residential Address</p>
+          <div class="border-b pb-2 mx-4">
+            <p class="text-xs p-2">Residential Address</p>
             <p>{{ userData.customer.ResidentialAddress1 }}</p>
           </div>
-          <div class="border-b pb-2 p-8">
-            <p>Phone No</p>
+          <div class="border-b pb-2 mx-4">
+            <p class="text-xs p-2">Phone No</p>
             <p>{{ userData.customer.CellularNo }}</p>
           </div>
         </div>
@@ -65,17 +65,6 @@
 
           <component :is="tab" :user="userData" />
         </div>
-
-        <!-- <datatable
-          class="pt-12 p-4 text-9xl"
-          :columns="columns"
-          :data="data"
-          :footer="false"
-          :header="false"
-          :limit="15"
-          :selectable="false"
-          dropdown="actions"
-        ></datatable> -->
       </div>
     </div>
   </div>
@@ -92,7 +81,7 @@ export default {
     return {
       tabs: [
         // { name: "profile", title: "Profile" },
-        { name: "performance", title: "Performance Summary" },
+        { name: "performance", title: "Summary" },
         { name: "approval", title: "Instant Approval" }
         // { name: "branch", title: "Branch & Region" },
         // { name: "transactions", title: "Transfer Transactions" },
@@ -100,24 +89,6 @@ export default {
       ],
       tab: "performance",
       userData: {},
-      columns: [
-        {
-          th: "Customer's Name",
-          name: "name"
-        },
-        {
-          th: "Employement Status",
-          name: "status"
-        },
-        {
-          th: "Workplace Email",
-          name: "email"
-        },
-        {
-          th: "Loan Status",
-          name: "loanstatus"
-        }
-      ]
     }
   },
   computed: {

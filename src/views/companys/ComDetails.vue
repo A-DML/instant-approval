@@ -17,13 +17,6 @@
           />
           <TextField
             class="mb-10"
-            label="Email"
-            :error="error.email"
-            type="text"
-            v-model="form.email"
-          />
-          <TextField
-            class="mb-10"
             label="Website"
             :error="error.website"
             type="text"
@@ -45,7 +38,7 @@
           />
           <!-- section for status of the company with credpal -->
 
-          <div class="col-span-3">
+          <!-- <div class="col-span-3">
             <div class="grid grid-cols-3 gap-2">
               <p class="text-loanbot-blue mb-4">Credpal User :</p>
               <div
@@ -79,10 +72,10 @@
                 </label>
               </div>
             </div>
-          </div>
+          </div> -->
           <!-- the button for company tier -->
 
-          <div class="col-span-3">
+          <!-- <div class="col-span-3">
             <div class="grid grid-cols-3 gap-2 mb-4">
               <p class="text-loanbot-blue mb-a">Tier</p>
               <div
@@ -116,7 +109,7 @@
                 </label>
               </div>
             </div>
-          </div>
+          </div> -->
           <!-- section for staus of the company -->
           <p class="text-loanbot-blue mb-a">Status</p>
           <div class="col-span-3">
