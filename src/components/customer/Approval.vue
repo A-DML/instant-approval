@@ -10,7 +10,7 @@
                   <div class="flex-auto p-4">
                     <div class="flex flex-wrap">
                       <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                        <h5 class="text-blueGray-400 uppercase  text-xs">
+                        <h5 class="text-blueGray-400 uppercase opacity-75 text-xs">
                           Status 
                         </h5>
                         <span class=" text-xs text-blueGray-700">
@@ -26,7 +26,7 @@
                   <div class="flex-auto p-4">
                     <div class="flex flex-wrap">
                       <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                        <h5 class="text-blueGray-400 uppercase  text-xs">
+                        <h5 class="text-blueGray-400 uppercase opacity-75 text-xs">
                           Amount 
                         </h5>
                         <span class=" text-xs text-blueGray-700">
@@ -42,7 +42,7 @@
                   <div class="flex-auto p-4">
                     <div class="flex flex-wrap">
                       <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                        <h5 class="text-blueGray-400 uppercase  text-xs">
+                        <h5 class="text-blueGray-400 uppercase opacity-75 text-xs">
                           Remark 
                         </h5>
                         <span class=" text-xs text-blueGray-700">

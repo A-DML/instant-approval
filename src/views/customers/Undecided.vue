@@ -51,7 +51,7 @@ export default {
         {
           th: "Workplace Status",
           name: "status",
-          ender: (customer) =>
+          render: (customer) =>
             customer?.workplace_status ? `${customer?.workplace_status}` : "N/A"
         },
         {

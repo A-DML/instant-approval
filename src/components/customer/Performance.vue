@@ -12,9 +12,11 @@
             <div class="flex-auto p-4">
               <div class="flex flex-wrap">
                 <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                  <h5 class="text-blueGray-400 uppercase text-xs opacity-75">Open Loan</h5>
+                  <h5 class="text-blueGray-400 uppercase text-xs opacity-75">
+                    Open Loan
+                  </h5>
                   <span class="text-xs text-blueGray-700">
-                    {{performanceSummaryData('open_loans')}}
+                    {{ performanceSummaryData("open_loans") }}
                   </span>
                 </div>
               </div>
@@ -28,10 +30,12 @@
             <div class="flex-auto p-4">
               <div class="flex flex-wrap">
                 <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                  <h5 class="text-blueGray-400 uppercase text-xs">
+                  <h5 class="text-blueGray-400 uppercase opacity-75 text-xs">
                     Sub-Standard Loan
                   </h5>
-                  <span class="text-xs text-blueGray-700"> {{performanceSummaryData('sub_standard_loans')}} </span>
+                  <span class="text-xs text-blueGray-700">
+                    {{ performanceSummaryData("sub_standard_loans") }}
+                  </span>
                 </div>
               </div>
             </div>
@@ -44,10 +48,12 @@
             <div class="flex-auto p-4">
               <div class="flex flex-wrap">
                 <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                  <h5 class="text-blueGray-400 uppercase text-xs">
+                  <h5 class="text-blueGray-400 uppercase text-xs opacity-75">
                     Doubtful Loan
                   </h5>
-                  <span class="text-xs text-blueGray-700"> {{performanceSummaryData('doubtful_loans')}} </span>
+                  <span class="text-xs text-blueGray-700">
+                    {{ performanceSummaryData("doubtful_loans") }}
+                  </span>
                 </div>
               </div>
             </div>
@@ -60,8 +66,12 @@
             <div class="flex-auto p-4">
               <div class="flex flex-wrap">
                 <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                  <h5 class="text-blueGray-400 uppercase text-xs">Lost Loan</h5>
-                  <span class="text-xs text-blueGray-700"> {{performanceSummaryData('lost_loans')}} </span>
+                  <h5 class="text-blueGray-400 uppercase text-xs opacity-75">
+                    Lost Loan
+                  </h5>
+                  <span class="text-xs text-blueGray-700">
+                    {{ performanceSummaryData("lost_loans") }}
+                  </span>
                 </div>
               </div>
             </div>
@@ -74,10 +84,12 @@
             <div class="flex-auto p-4">
               <div class="flex flex-wrap">
                 <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                  <h5 class="text-blueGray-400 uppercase text-xs">
+                  <h5 class="text-blueGray-400 uppercase text-xs opacity-75">
                     Closed Loan
                   </h5>
-                  <span class="text-xs text-blueGray-700"> {{performanceSummaryData('closed_loans')}} </span>
+                  <span class="text-xs text-blueGray-700">
+                    {{ performanceSummaryData("closed_loans") }}
+                  </span>
                 </div>
               </div>
             </div>
@@ -113,104 +125,52 @@ export default {
       //   { name: "settings", title: "Settings" },
       // ],
       // tab: "profile",
-      data: [
-        {
-          id: 1,
-          name: "AMINAT ABIDOGUN",
-          status: "Employed",
-          bvn: "33453890233",
-          email: "aa@gmail.com",
-          remark: "Customers record not found",
-          amount: "40,009",
-          loanstatus: "Approved",
-          details: "View"
-        },
-        {
-          id: 1,
-          name: "AMINAT ABIDOGUN",
-          status: "Employed",
-          bvn: "33453890233",
-          email: "aa@gmail.com",
-          remark: "Customers record not found",
-          amount: "40,009",
-          loanstatus: "Approved",
-          details: "View"
-        },
-        {
-          id: 1,
-          name: "AMINAT ABIDOGUN",
-          status: "Employed",
-          bvn: "33453890233",
-          email: "aa@gmail.com",
-          remark: "Customers record not found",
-          amount: "40,009",
-          loanstatus: "Approved",
-          details: "View"
-        },
-        {
-          id: 1,
-          name: "AMINAT ABIDOGUN",
-          status: "Employed",
-          bvn: "33453890233",
-          email: "aa@gmail.com",
-          remark: "Customers record not found",
-          amount: "40,009",
-          loanstatus: "Approved",
-          details: "View"
-        },
-        {
-          id: 1,
-          name: "AMINAT ABIDOGUN",
-          status: "Employed",
-          bvn: "33453890233",
-          email: "aa@gmail.com",
-          remark: "Customers record not found",
-          amount: "40,009",
-          loanstatus: "Approved",
-          details: "View"
-        }
-      ],
+      data: [ ],
       userData: {},
       columns: [
         {
           th: "Subscriber's Name",
-          name: "name"
+          name: "SubscriberName",
+          // render: (userData) => {
+          //   console.log(99, userData)
+          // return  userData?.credit_agreement_summary.SubscriberName ? `${userData?.credit_agreement_summary.SubscriberName}` : "N/A"
+          // }
         },
         {
           th: "Opening Balance",
-          name: "balance"
+          name: "OpeningBalanceAmt"
         },
         {
           th: "Performance Status ",
-          name: "performancestatus"
+          name: "PerformanceStatus"
         },
         {
           th: "Account Status ",
-          name: "accountstatus"
+          name: "AccountStatus"
         },
         {
           th: "Account Performance Status ",
-          name: "accountperstatus"
+          name: "AccountPerformanceStatus"
         },
         {
           th: "Loan Type",
-          name: "loantype"
+          name: "LoanType"
         },
         {
           th: "Loan Duration",
-          name: "loanduration"
+          name: "LoanDuration"
         },
         {
           th: "Instalment Amount",
-          name: "instalmentamount"
+          name: "InstalmentAmount"
         },
         {
           th: "Date Account Opened",
-          name: "dateaccountopened"
+          name: "DateAccountOpened"
         },
         {
           th: "Date Account Close",
-          name: "dateaccountclose"
+          name: "ClosedDate"
         }
       ],
     }
@@ -228,7 +188,7 @@ required: true
     agreementSummary() {
       return this.user.credit_agreement_summary
     }
-   
+
   },
   beforeMount() {
     this.fetch()
