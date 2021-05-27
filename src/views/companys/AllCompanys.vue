@@ -127,12 +127,13 @@
       />
     </Paginator>
     <datatable
-      class="pt-12 text-9xl p-6"
+      class="pt-12 text-xs p-6"
       :columns="columns"
       :data="data"
       :footer="false"
       :header="false"
-      :limit="15"
+      :limit="20"
+      :query="query"
       :selectable="false"
       dropdown="actions"
     >

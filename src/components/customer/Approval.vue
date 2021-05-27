@@ -13,8 +13,8 @@
                         <h5 class="text-blueGray-400 uppercase  text-xs">
                           Status 
                         </h5>
-                        <span class=" text-xl text-blueGray-700">
-                          350,897
+                        <span class=" text-xs text-blueGray-700">
+                          {{instantApprovalData('status')}}
                         </span>
                       </div>
                     </div>
@@ -29,8 +29,8 @@
                         <h5 class="text-blueGray-400 uppercase  text-xs">
                           Amount 
                         </h5>
-                        <span class=" text-xl text-blueGray-700">
-                          350,897
+                        <span class=" text-xs text-blueGray-700">
+                          {{instantApprovalData('amount')}}
                         </span>
                       </div>
                     </div>
@@ -45,8 +45,8 @@
                         <h5 class="text-blueGray-400 uppercase  text-xs">
                           Remark 
                         </h5>
-                        <span class=" text-xl text-blueGray-700">
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque rem eum maxime! Dolor, fugit doloremque nam cumque ratione, numquam eos voluptas ducimus molestias, reprehenderit nesciunt incidunt commodi soluta totam laborum?
+                        <span class=" text-xs text-blueGray-700">
+                          {{instantApprovalData('remark')}}
                         </span>
                       </div>
                     </div>
@@ -76,3 +76,59 @@
     </div>
   </div>
 </template>
+<script>
+import { fetchCustomerDetails } from "@/requests"
+export default {
+  data() {
+    return {
+      // tabs: [
+      //   { name: "profile", title: "Profile" },
+      //   { name: "settlements", title: "Settlements" },
+      //   { name: "admins", title: "Admins" },
+      //   { name: "branch", title: "Branch & Region" },
+      //   { name: "transactions", title: "Transfer Transactions" },
+      //   { name: "settings", title: "Settings" },
+      // ],
+      // tab: "profile",
+      data: [],
+      userData: {},
+      columns: [],
+    }
+  },
+  props: {
+    user: {
+    type: Object,
+required: true
+}
+  },
+  computed: {
+    customerId() {
+      return this.$route.params.customerId
+    },
+    // customerName() {
+    //   return `${this.user?.surname} ${this.user?.name}`
+    // }
+  },
+  beforeMount() {
+    this.fetch()
+      console.log(99, this.user)
+  },
+  methods: {
+    instantApprovalData(key) {
+      return this.user.instant_approval[key] ?? "N/A"
+    },
+    test() {
+      console.log(99, this.customerId)
+    },
+    fetch() {
+      fetchCustomerDetails(this.customerId)
+        .then((response) => {
+          console.log(22, response)
+
+          this.userData = response.data
+        })
+        .catch((error) => console.log(error))
+    }
+  }
+}
+</script>

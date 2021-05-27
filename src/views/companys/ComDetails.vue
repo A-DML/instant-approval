@@ -29,13 +29,13 @@
             type="text"
             v-model="form.address"
           />
-          <TextField
+          <!-- <TextField
             class="mb-10"
             label="Salary Date"
             :error="error.salarydate"
             type="text"
             v-model="form.salarydate"
-          />
+          /> -->
           <!-- section for status of the company with credpal -->
 
           <!-- <div class="col-span-3">
@@ -144,7 +144,7 @@
                   <span class="mr-4 text-left"> Blacklist </span>
                 </label>
               </div>
-              <div
+              <!-- <div
                 class="radio"
                 :class="status === 'Unlisted' && 'active'"
                 @click="changetier('Unlisted')"
@@ -158,7 +158,7 @@
                   />
                   <span class="mr-4 text-left"> Unlisted </span>
                 </label>
-              </div>
+              </div> -->
             </div>
           </div>
           <div>

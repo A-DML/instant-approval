@@ -9,35 +9,35 @@
         <div v-if="userData.customer">
           <div class="border-b pb-2 mx-4">
             <p class="text-xs p-2">Surname</p>
-            <p class="text-xm ">{{ userData.customer.Surname }}</p>
+            <p class="text-xs opacity-75 ">{{ customerDetail('Surname')}}</p>
           </div>
           <div class="border-b pb-2 mx-4">
-            <p class="text-xs p-2">Lastname</p>
-            <p>{{ userData.customer.FirstName }}</p>
+            <p class="text-xs p-2">Firstname</p>
+            <p class="text-xs opacity-75 ">{{ customerDetail('FirstName')}}</p>
           </div>
           <div class="border-b pb-2 mx-4">
             <p class="text-xs p-2">Nationality</p>
-            <p>{{ userData.customer.Nationality }}</p>
+            <p class="text-xs opacity-75 ">{{ customerDetail('Nationality') }}</p>
           </div>
           <div class="border-b pb-2 mx-4">
             <p class="text-xs p-2">BVN</p>
-            <p>{{ userData.customer.BankVerificationNo }}</p>
+            <p class="text-xs opacity-75 ">{{customerDetail('BankVerificationNo') }}</p>
           </div>
           <div class="border-b pb-2 mx-4">
             <p class="text-xs p-2">Gender</p>
-            <p>{{ userData.customer.Gender }}</p>
+            <p class="text-xs opacity-75 ">{{ customerDetail('Gender') }}</p>
           </div>
           <div class="border-b pb-2 mx-4">
             <p class="text-xs p-2">Date of Birth</p>
-            <p>{{ userData.customer.BirthDate }}</p>
+            <p class="text-xs opacity-75 ">{{ customerDetail('BirthDate') }}</p>
           </div>
           <div class="border-b pb-2 mx-4">
             <p class="text-xs p-2">Residential Address</p>
-            <p>{{ userData.customer.ResidentialAddress1 }}</p>
+            <p class="text-xs opacity-75">{{ customerDetail('ResidentialAddress1') }}</p>
           </div>
           <div class="border-b pb-2 mx-4">
             <p class="text-xs p-2">Phone No</p>
-            <p>{{ userData.customer.CellularNo }}</p>
+            <p class="text-xs opacity-75 ">{{ customerDetail('CellularNo') }}</p>
           </div>
         </div>
       </div>
@@ -93,13 +93,18 @@ export default {
   },
   computed: {
     customerId() {
-      return this.$route.params.customerId
+      return this.$route.params.customerId 
     }
   },
   beforeMount() {
     this.fetch()
   },
   methods: {
+    customerDetail(key) {
+      console.log(key);
+      
+      return this.userData?.customer[key] ?? "N/A"
+    },
     test() {
       console.log(99, this.customerId)
     },

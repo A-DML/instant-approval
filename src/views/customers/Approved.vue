@@ -18,8 +18,10 @@
         :footer="false"
         :header="false"
         :limit="15"
+        :query="query"
         :selectable="false"
         dropdown="actions"
+        :on-click="selectionUpdate"
         @clicked-row="selectionUpdate"
       >
       <template #td-7="{ item }">

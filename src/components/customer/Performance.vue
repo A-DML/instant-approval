@@ -12,9 +12,9 @@
             <div class="flex-auto p-4">
               <div class="flex flex-wrap">
                 <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                  <h5 class="text-blueGray-400 uppercase text-xs">Open Loan</h5>
-                  <span class="text-xl text-blueGray-700">
-                    77777
+                  <h5 class="text-blueGray-400 uppercase text-xs opacity-75">Open Loan</h5>
+                  <span class="text-xs text-blueGray-700">
+                    {{performanceSummaryData('open_loans')}}
                   </span>
                 </div>
               </div>
@@ -31,7 +31,7 @@
                   <h5 class="text-blueGray-400 uppercase text-xs">
                     Sub-Standard Loan
                   </h5>
-                  <span class="text-xl text-blueGray-700"> 350,897 </span>
+                  <span class="text-xs text-blueGray-700"> {{performanceSummaryData('sub_standard_loans')}} </span>
                 </div>
               </div>
             </div>
@@ -47,7 +47,7 @@
                   <h5 class="text-blueGray-400 uppercase text-xs">
                     Doubtful Loan
                   </h5>
-                  <span class="text-xl text-blueGray-700"> 350,897 </span>
+                  <span class="text-xs text-blueGray-700"> {{performanceSummaryData('doubtful_loans')}} </span>
                 </div>
               </div>
             </div>
@@ -61,7 +61,7 @@
               <div class="flex flex-wrap">
                 <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                   <h5 class="text-blueGray-400 uppercase text-xs">Lost Loan</h5>
-                  <span class="text-xl text-blueGray-700"> 350,897 </span>
+                  <span class="text-xs text-blueGray-700"> {{performanceSummaryData('lost_loans')}} </span>
                 </div>
               </div>
             </div>
@@ -77,7 +77,7 @@
                   <h5 class="text-blueGray-400 uppercase text-xs">
                     Closed Loan
                   </h5>
-                  <span class="text-xl text-blueGray-700"> 350,897 </span>
+                  <span class="text-xs text-blueGray-700"> {{performanceSummaryData('closed_loans')}} </span>
                 </div>
               </div>
             </div>
@@ -85,12 +85,12 @@
         </div>
       </div>
     </div>
-    <Tabs v-model="tab" :tabs="tabs" class="mb-6" />
-    <div class="p-2">Credit Agreement summary</div>
+    <!-- <Tabs v-model="tab" :tabs="tabs" class="mb-6" /> -->
+    <div class="p-4">Credit Agreement summary</div>
     <datatable
-      class="pt-12 p-4 text-9xl"
+      class="pt-2 p-4 text-9xl"
       :columns="columns"
-      :data="data"
+      :data="agreementSummary"
       :footer="false"
       :header="false"
       :limit="15"
@@ -212,7 +212,7 @@ export default {
           th: "Date Account Close",
           name: "dateaccountclose"
         }
-      ]
+      ],
     }
   },
   props: {
@@ -224,14 +224,20 @@ required: true
   computed: {
     customerId() {
       return this.$route.params.customerId
+    },
+    agreementSummary() {
+      return this.user.credit_agreement_summary
     }
+   
   },
   beforeMount() {
     this.fetch()
-      console.log(this.user)
-
+      console.log(99, this.user)
   },
   methods: {
+    performanceSummaryData(key) {
+      return this.user?.performance_summary[key] ?? "N/A"
+    },
     test() {
       console.log(99, this.customerId)
     },
@@ -244,6 +250,9 @@ required: true
         })
         .catch((error) => console.log(error))
     }
+     // customerName() {
+    //   return `${this.user?.surname} ${this.user?.name}`
+    // }
   }
 }
 </script>
