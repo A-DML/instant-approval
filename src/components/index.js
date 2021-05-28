@@ -9,6 +9,9 @@ Vue.component("DashboardOverviewCard", () =>
 Vue.component("Icon", () => import("@/components/IonIcon"))
 Vue.component("CustomerStatus", () => import("@/components/customer/Status"))
 Vue.component("CompanyStatus", () => import("@/components/company/Status"))
+Vue.component("CompanyDashboard", () =>
+  import("@/components/company/CompanyDashboard")
+)
 Vue.component("SearchField", () => import("@/components/form/SearchField"))
 Vue.component("Paginator", () => import("@/components/Paginator"))
 // Vue.component("DropDown", () => import("@/components/form/DropDown"))
@@ -17,4 +20,7 @@ Vue.component("CustomerNavigator", () =>
 )
 Vue.component("Tabs", () => import("@/components/customer/DetailNavigator"))
 Vue.component("Performance", () => import("@/components/customer/Performance"))
+Vue.component("CustomerDashboard", () =>
+  import("@/components/customer/CustomerDashboard")
+)
 Vue.component("Approval", () => import("@/components/customer/Approval"))

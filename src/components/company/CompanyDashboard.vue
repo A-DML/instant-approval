@@ -1,47 +1,26 @@
 <template>
-  <div>
-    <div class="flex flex-wrap sm:justify-between mt-8 mb-8 p-6">
-      <div>
-        <h1 class="text-3xl font-bold mb-1">Whitelisted Companies</h1>
-        <div>
-          <router-link :to="{ name: 'comdetails' }" class="button">
-            Add Company
-          </router-link>
-        </div>
-      </div>
-    </div>
-    <SearchField
-        class="w-full p-6"
-        v-model="query"
-        label="Search for Customer’s Name, Status, etc."
-      />
-    <datatable
-      class="pt-12 text-9xl p-6"
+    <div>
+         <datatable
+      class="pt-12 text-xs p-6"
       :columns="columns"
       :data="data"
       :footer="false"
       :header="false"
-      :limit="15"
+      :limit="5"
       :query="query"
       :selectable="false"
       dropdown="actions"
     >
-      <template #td-7="{ item }">
+      <template #td-4="{ item }">
         <CompanyStatus :status="item.row.status" />
       </template>
-      <router-link
-        :to="{ name: 'comdetails' }"
-        class="button bg-white text-loanbot-blue font-hairline inline-block mx-2"
-      >
-        View
-      </router-link>
     </datatable>
-  </div>
+    </div>
 </template>
 <script>
-import { fetchWhitelisted } from "@/requests"
+import { fetchCompanies } from "@/requests"
 export default {
-  data() {
+    data() {
     return {
       perPage: 10,
       total: 0,
@@ -76,19 +55,36 @@ export default {
         },
         {
           th: "Status",
-          name: "status"
+          name: "status",
+          render: (company) =>
+          company?. status
         }
-      ]
+      ],
+      summarydata: {}
     }
   },
-
+  watch: {
+    query: {
+      handler() {
+        this.fetch()
+      }
+    },
+    perPage: {
+      handler() {
+        this.fetch()
+      }
+    }
+  },
   beforeMount() {
+    // this.listenForClick()
     this.fetch()
   },
   methods: {
     fetch(page = 1) {
       // this.loading = true
-      fetchWhitelisted(page, this.query, this.perPage)
+      fetchCompanies(page, {
+        search: this.query
+      }, this.perPage)
         .then(({ data }) => {
           console.log(data)
 
@@ -99,7 +95,7 @@ export default {
         })
         .catch(null)
         .finally(() => console.log())
-    }
+    },
   }
 }
 </script>

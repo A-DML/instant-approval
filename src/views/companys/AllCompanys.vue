@@ -18,7 +18,7 @@
           <div class="flex-auto p-4">
             <div class="flex flex-wrap">
               <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                <h5 class="text-blueGray-400 uppercase font-bold text-xs">
+                <h5 class="text-blueGray-400 uppercase text-xs">
                   Total Companies
                 </h5>
                 <span class="font-semibold text-xl text-blueGray-700">
@@ -43,7 +43,7 @@
           <div class="flex-auto p-4">
             <div class="flex flex-wrap">
               <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                <h5 class="text-blueGray-400 uppercase font-bold text-xs">
+                <h5 class="text-blueGray-400 uppercase text-xs">
                   Whitelisted
                 </h5>
                 <span class="font-semibold text-xl text-blueGray-700">
@@ -68,7 +68,7 @@
           <div class="flex-auto p-4">
             <div class="flex flex-wrap">
               <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                <h5 class="text-blueGray-400 uppercase font-bold text-xs">
+                <h5 class="text-blueGray-400 uppercase text-xs">
                   Blacklisted
                 </h5>
                 <span class="font-semibold text-xl text-blueGray-700">
@@ -93,7 +93,7 @@
           <div class="flex-auto p-4">
             <div class="flex flex-wrap">
               <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                <h5 class="text-blueGray-400 uppercase font-bold text-xs">
+                <h5 class="text-blueGray-400 uppercase text-xs">
                   Pending
                 </h5>
                 <span class="font-semibold text-xl text-blueGray-700">

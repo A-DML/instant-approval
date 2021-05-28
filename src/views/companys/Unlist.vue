@@ -10,7 +10,11 @@
         </div>
       </div>
     </div>
-    
+    <SearchField
+        class="w-full p-6"
+        v-model="query"
+        label="Search for Customer’s Name, Status, etc."
+      />
     <datatable
       class="pt-12 text-9xl p-6"
       :columns="columns"
@@ -18,6 +22,7 @@
       :footer="false"
       :header="false"
       :limit="15"
+      :query="query"
       :selectable="false"
       dropdown="actions"
     >

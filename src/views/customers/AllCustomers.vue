@@ -13,7 +13,7 @@
           <div class="flex-auto p-4">
             <div class="flex flex-wrap">
               <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                <h5 class="text-blueGray-400 uppercase font-bold text-xs">
+                <h5 class="text-blueGray-400 uppercase text-xs">
                   Total Customer
                 </h5>
                 <span class="font-semibold text-xl text-blueGray-700">
@@ -38,7 +38,7 @@
           <div class="flex-auto p-4">
             <div class="flex flex-wrap">
               <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                <h5 class="text-blueGray-400 uppercase font-bold text-xs">
+                <h5 class="text-blueGray-400 uppercase text-xs">
                   Approved
                 </h5>
                 <span class="font-semibold text-xl text-blueGray-700">
@@ -63,7 +63,7 @@
           <div class="flex-auto p-4">
             <div class="flex flex-wrap">
               <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                <h5 class="text-blueGray-400 uppercase font-bold text-xs">
+                <h5 class="text-blueGray-400 uppercase text-xs">
                   Undecided
                 </h5>
                 <span class="font-semibold text-xl text-blueGray-700">
@@ -88,7 +88,7 @@
           <div class="flex-auto p-4">
             <div class="flex flex-wrap">
               <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                <h5 class="text-blueGray-400 uppercase font-bold text-xs">
+                <h5 class="text-blueGray-400 uppercase text-xs">
                   Declined
                 </h5>
                 <span class="font-semibold text-xl text-blueGray-700">
