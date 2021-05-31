@@ -3,7 +3,7 @@
     <Tabs v-model="tab" :tabs="tabs" class="mb-6" />
     <div class="flex flex-wrap sm:justify-between mt-4 mb-4 p-8">
       <div>
-        <h1 class="text-3xs font-bold mb-1">Instant Approval</h1>
+        <h1 class="text-3xs mb-1">Instant Approval</h1>
         <div class="flex flex-wrap">
          <div class="">
                 <div class="relative flex flex-col min-w-0 break-words white rounded mb-6 xl:mb-0 shadow-lg">
