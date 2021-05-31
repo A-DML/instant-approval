@@ -1,9 +1,9 @@
 <template>
   <div class="sidebar">
     <img alt="" class="m-2 ml-2 p-4 mx-auto" src="@/assets/images/logo.svg" />
-    <div class="nav-title text-xs text-blue-300 opacity-19">
+    <!-- <div class="nav-title text-xs  text-blue-300 opacity-19">
       Instant Approval
-    </div>
+    </div> -->
     <ul class="nav pl-2">
       <!-- <router-link
           v-for="(link, i) in headerLinks"
