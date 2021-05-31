@@ -17,7 +17,7 @@
                   Total Customer
                 </h5>
                 <span class="font-semibold text-xl text-blueGray-700">
-                  {{ totalcustomer }}
+                  {{ totalcustomer }} <Loader />
                 </span>
               </div>
               <div class="relative w-auto pl-4 flex-initial">
@@ -274,7 +274,8 @@ import { fetchSummary, fetchCustomerSummary } from "@/requests"
 export default {
   components: {
     CustomerDashboard: () => import("@/components/customer/CustomerDashboard"),
-    CompanyDashboard: () => import("@/components/company/CompanyDashboard")
+    CompanyDashboard: () => import("@/components/company/CompanyDashboard"),
+
   },
   data() {
     return {

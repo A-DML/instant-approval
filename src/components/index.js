@@ -24,3 +24,4 @@ Vue.component("CustomerDashboard", () =>
   import("@/components/customer/CustomerDashboard")
 )
 Vue.component("Approval", () => import("@/components/customer/Approval"))
+Vue.component("Loader", () => import("@/components/loader/Loader"))
