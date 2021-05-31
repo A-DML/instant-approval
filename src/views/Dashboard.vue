@@ -17,7 +17,7 @@
                   Total Customer
                 </h5>
                 <span class="font-semibold text-xl text-blueGray-700">
-                  {{ totalcustomer }} <Loader />
+                  {{ totalcustomer }} 
                 </span>
               </div>
               <div class="relative w-auto pl-4 flex-initial">
@@ -264,6 +264,7 @@
         </div>
       </div>
     </div>
+    <Loader />
      <Tabs v-model="tab" :tabs="tabs" class="mt-6 mx-4" />
      <component :is="tab" />
   
