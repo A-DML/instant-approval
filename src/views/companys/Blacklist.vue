@@ -164,7 +164,9 @@ export default {
         },
         {
           th: "Status",
-          name: "status"
+          name: "status",
+          render: (company) =>
+          company?. status
         }
       ]
     }

@@ -69,17 +69,12 @@ export default {
               ? `${customer?.workplace_email}`
               : "N/A"
         },
-        {
-          th: "Remark",
-          name: "remark"
-        },
-        {
-          th: "Loan Amount",
-          name: "amount"
-        },
+       
         {
           th: "Loan Status",
-          name: "loanstatus"
+          name: "loanstatus",
+          render: (customer) =>
+          customer?.instant_approval?.status
         }
       ]
       // actions: [

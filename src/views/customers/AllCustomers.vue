@@ -194,7 +194,9 @@ export default {
 
         {
           th: "Loan Status",
-          name: "loanstatus"
+          name: "loanstatus",
+          render: (customer) =>
+          customer?.instant_approval?.status
         }
       ],
       customerdata: {}
